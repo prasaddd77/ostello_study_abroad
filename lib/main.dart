@@ -4,9 +4,19 @@ import 'package:ostello_task/presentation/screens/budget_screen.dart';
 import 'package:ostello_task/presentation/screens/countries_screen.dart';
 import 'package:ostello_task/presentation/screens/degree_screen.dart';
 import 'package:ostello_task/presentation/screens/major_subject_screen.dart';
+import 'package:provider/provider.dart';
+
+import 'providers/scholarship_provider.dart';
+import 'providers/slider_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => SliderProvider()),
+      ChangeNotifierProvider(create: (_) => ScholarshipProvider()),
+    ],
+      child: const MyApp())
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,11 +29,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Avenir',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const CountryScreen(),
-      initialRoute: MyRoutes.countryScreen,
+      //home: const CountryScreen(),
+      initialRoute: MyRoutes.budgetScreen,
       onGenerateRoute: MyRoutes.generateRoute,
     );
   }

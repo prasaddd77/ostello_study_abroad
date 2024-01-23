@@ -5,10 +5,12 @@ class Assets {
   static const String imagesAustralia = 'assets/images/australia.png';
   static const String imagesBachelors = 'assets/images/bachelors.png';
   static const String imagesCanada = 'assets/images/canada.png';
+  static const String imagesDottedLine = 'assets/images/dotted_line.png';
   static const String imagesGermany = 'assets/images/germany.png';
-  static const String imagesImg = 'assets/images/dotted_line.png';
+  static const String imagesImg = 'assets/images/no.png';
   static const String imagesJapan = 'assets/images/japan.png';
   static const String imagesMasters = 'assets/images/masters.png';
+  static const String imagesOk = 'assets/images/ok.png';
   static const String imagesPhd = 'assets/images/phd.png';
   static const String imagesUk = 'assets/images/uk.png';
   static const String imagesUsa = 'assets/images/usa.png';

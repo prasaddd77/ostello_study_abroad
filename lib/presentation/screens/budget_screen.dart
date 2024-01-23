@@ -3,6 +3,8 @@ import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
+import 'package:ostello_task/providers/slider_provider.dart';
+import 'package:provider/provider.dart';
 
 class BudgetScreen extends StatefulWidget {
   const BudgetScreen({super.key});
@@ -55,9 +57,36 @@ class _BudgetScreenState extends State<BudgetScreen> {
                   ],
                 ),
               ),
-
+              const SizedBox(height: 40),
+              Consumer<SliderProvider>(
+                builder: (context, sliderProvider, child) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('\$${sliderProvider.startValue.toInt()}', style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                      Text('\$${sliderProvider.endValue.toInt()}', style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                    ],
+                  );
+                },
+              ),
+              Consumer<SliderProvider>(
+                builder: (context, sliderProvider, child) {
+                  return RangeSlider(
+                    values: RangeValues(sliderProvider.startValue, sliderProvider.endValue),
+                    min: 0.0,
+                    max: 200.0,
+                    onChanged: (RangeValues values) {
+                      sliderProvider.updateValues(values.start, values.end);
+                    },
+                    labels: RangeLabels(
+                      '${sliderProvider.startValue}',
+                      '${sliderProvider.endValue}',
+                    ),
+                  );
+                },
+              ),
               const SizedBox(height: 16.0),
-              Spacer(),
+              const Spacer(),
               CustomButton(
                 onPressed: (){
                   Navigator.pushNamed(context, MyRoutes.scholarshipScreen);

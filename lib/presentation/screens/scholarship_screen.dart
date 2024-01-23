@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
+import 'package:ostello_task/presentation/common_widgets/custom_container.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
+import 'package:ostello_task/providers/scholarship_provider.dart';
+import 'package:provider/provider.dart';
 
-class ScholarshipScreen extends StatelessWidget {
+class ScholarshipScreen extends StatefulWidget {
   const ScholarshipScreen({super.key});
 
+  @override
+  State<ScholarshipScreen> createState() => _ScholarshipScreenState();
+}
+
+class _ScholarshipScreenState extends State<ScholarshipScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +52,36 @@ class ScholarshipScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 17.0, color: Colors.black),
                 ),
               ),
-
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 42.0),
+              Consumer<ScholarshipProvider>(
+                builder: (context, scholarshipProvider, child) {
+                  return CustomContainer(
+                    text: "Yes",
+                    imagePath: 'assets/images/ok.png',
+                    isSelected: scholarshipProvider.isYesSelected,
+                    onTap: (selected) {
+                      if (selected) {
+                        scholarshipProvider.selectYes();
+                      }
+                    },
+                  );
+                },
+              ),
+              const SizedBox(height: 16,),
+              Consumer<ScholarshipProvider>(
+                builder: (context, scholarshipProvider, child) {
+                  return CustomContainer(
+                    text: "No",
+                    imagePath: 'assets/images/no.png',
+                    isSelected: scholarshipProvider.isNoSelected,
+                    onTap: (selected) {
+                      if (selected) {
+                        scholarshipProvider.selectNo();
+                      }
+                    },
+                  );
+                },
+              ),
               const Spacer(),
               CustomButton(
                 onPressed: () {},

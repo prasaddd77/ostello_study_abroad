@@ -53,7 +53,7 @@ class CountryScreen extends StatelessWidget {
               ),
 
               const SizedBox(height: 16.0),
-              Expanded(
+              Flexible(
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -72,7 +72,7 @@ class CountryScreen extends StatelessWidget {
                 ),
               ),
               // const Spacer(),
-              SizedBox(height: 8,),
+              const SizedBox(height: 8,),
               CustomButton(
                 onPressed: () {
                   Navigator.pushNamed(context, MyRoutes.degreeScreen);
