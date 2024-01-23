@@ -34,9 +34,9 @@ class DegreeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: const CustomRow(),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: CustomRow(),
             ),
             const SizedBox(height: 16.0),
             Padding(
@@ -97,10 +97,13 @@ class DegreeScreen extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            CustomButton(
-              onPressed: () {
-                Navigator.pushNamed(context, MyRoutes.majorSubjectScreen);
-              },
+            Padding(
+              padding: const EdgeInsets.only(bottom: 24.0),
+              child: CustomButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, MyRoutes.majorSubjectScreen);
+                },
+              ),
             ),
           ],
         ),
