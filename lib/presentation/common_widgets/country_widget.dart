@@ -14,40 +14,40 @@ class CountryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: isSelected
-            ? Border.all(color: MyColors.primaryColor,)
-            : Border.all(color: Colors.transparent),
-        borderRadius: BorderRadius.circular(8.0),
-        boxShadow: isSelected
-            ? [
-          BoxShadow(
-            color: MyColors.primaryColor.withOpacity(0.15),
-            spreadRadius: 3,
-            blurRadius: 25,
-            offset: const Offset(0, 0),
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            // border: isSelected
+            //     ? Border.all(color: MyColors.primaryColor,)
+            //     : Border.all(color: Colors.transparent),
+            // borderRadius: BorderRadius.circular(8.0),
+            boxShadow: isSelected
+                ? [
+              BoxShadow(
+                color: MyColors.primaryColor.withOpacity(0.20),
+                spreadRadius: -8,
+                blurRadius: 20,
+                offset: const Offset(0, 0),
+              ),
+            ]
+                : [],
           ),
-        ]
-            : [],
-      ),
-      child: Column(
-        children: [
-          Image.asset(
+          child: Image.asset(
             flagImagePath,
             width: 100.0,
             height: 100.0,
           ),
-          const SizedBox(height: 8.0),
-          Text(
-            countryName,
-            style: TextStyle(
-              color: isSelected ? MyColors.primaryColor : Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
+        ),
+        const SizedBox(height: 8.0),
+        Text(
+          countryName,
+          style: TextStyle(
+            color: isSelected ? MyColors.primaryColor : Colors.black,
+            fontWeight: FontWeight.bold,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

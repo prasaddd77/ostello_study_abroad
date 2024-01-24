@@ -6,6 +6,7 @@ class Assets {
   static const String commonWidgetsCustomButton = 'lib/presentation/common_widgets/custom_button.dart';
   static const String commonWidgetsCustomContainer = 'lib/presentation/common_widgets/custom_container.dart';
   static const String commonWidgetsCustomRow = 'lib/presentation/common_widgets/custom_row.dart';
+  static const String commonWidgetsDegreeWidget = 'lib/presentation/common_widgets/degree_widget.dart';
   static const String constantsMyColors = 'lib/core/constants/my_colors.dart';
   static const String constantsMyList = 'lib/core/constants/my_list.dart';
   static const String fontsAvenirLTStdBlack = 'lib/core/assets/fonts/AvenirLTStd-Black.otf';
@@ -25,6 +26,7 @@ class Assets {
   static const String libMain = 'lib/main.dart';
   static const String providersCountryProvider = 'lib/providers/country_provider.dart';
   static const String providersDegreeProvider = 'lib/providers/degree_provider.dart';
+  static const String providersMajorSubjectProvider = 'lib/providers/major_subject_provider.dart';
   static const String providersScholarshipProvider = 'lib/providers/scholarship_provider.dart';
   static const String providersSliderProvider = 'lib/providers/slider_provider.dart';
   static const String routesMyRoutes = 'lib/core/routes/my_routes.dart';

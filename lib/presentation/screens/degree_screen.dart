@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
+import 'package:ostello_task/providers/degree_provider.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
+import 'package:ostello_task/presentation/common_widgets/degree_widget.dart';
+import 'package:provider/provider.dart';
 
 class DegreeScreen extends StatelessWidget {
   const DegreeScreen({Key? key});
@@ -24,7 +27,16 @@ class DegreeScreen extends StatelessWidget {
             icon: const Icon(Icons.arrow_forward),
             color: MyColors.primaryColor,
             onPressed: () {
-              
+              final selectedDegree = Provider.of<DegreeProvider>(context, listen: false).selectedDegree;
+              if(selectedDegree.isNotEmpty) {
+                Navigator.pushNamed(context, MyRoutes.majorSubjectScreen);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Please select a degree.'),
+                  )
+                );
+              }
             },
           ),
           const SizedBox(width: 16.0),
@@ -43,7 +55,7 @@ class DegreeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(24.0),
               child: RichText(
                 text: const TextSpan(
-                  text: 'Which level of degree you want to pursue abroad? ',
+                  text: 'Which level of degree do you want to pursue abroad? ',
                   style: TextStyle(fontSize: 17.0, color: Colors.black),
                 ),
               ),
@@ -60,38 +72,23 @@ class DegreeScreen extends StatelessWidget {
                     height: double.infinity,
                   ),
 
-                  Positioned(
+                  DegreeWidget(
+                    degree: 'Bachelors',
+                    imagePath: 'lib/core/assets/images/bachelors.png',
                     top: 187.0,
                     left: 20.0,
-                    child: GestureDetector(
-                      child: Image.asset(
-                        'lib/core/assets/images/bachelors.png',
-                        width: 100.0,
-                        height: 100.0,
-                      ),
-                    ),
                   ),
-                  Positioned(
+                  DegreeWidget(
+                    degree: 'Masters',
+                    imagePath: 'lib/core/assets/images/masters.png',
                     top: 120.0,
                     right: 160.0,
-                    child: GestureDetector(
-                      child: Image.asset(
-                        'lib/core/assets/images/masters.png',
-                        width: 100.0,
-                        height: 100.0,
-                      ),
-                    ),
                   ),
-                  Positioned(
+                  DegreeWidget(
+                    degree: 'PhD',
+                    imagePath: 'lib/core/assets/images/phd.png',
                     top: 0,
                     right: 40,
-                    child: GestureDetector(
-                      child: Image.asset(
-                        'lib/core/assets/images/phd.png',
-                        width: 100.0,
-                        height: 100.0,
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -101,7 +98,16 @@ class DegreeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 24.0),
               child: CustomButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, MyRoutes.majorSubjectScreen);
+                  final selectedDegree = Provider.of<DegreeProvider>(context, listen: false).selectedDegree;
+                  if(selectedDegree.isNotEmpty) {
+                    Navigator.pushNamed(context, MyRoutes.majorSubjectScreen);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please select a degree.'),
+                        )
+                    );
+                  }
                 },
               ),
             ),

@@ -89,7 +89,7 @@ class CountryScreen extends StatelessWidget {
                               );
                             }
 
-                            print('country: ${countryProvider.selectedCountry}');
+                            //print('country: ${countryProvider.selectedCountry}');
                           },
                           child: CountryWidget(
                             countryName: MyList.countryNames[index],

@@ -10,4 +10,14 @@ class MyList {
     'lib/core/assets/images/canada.png',
     'lib/core/assets/images/australia.png',
   ];
+  static const List<String> majors = [
+    'Computer Science',
+    'Electrical Engineering',
+    'Psychology',
+    'Biology',
+    'Chemistry',
+    'Mathematics',
+    'Business Administration',
+
+  ];
 }

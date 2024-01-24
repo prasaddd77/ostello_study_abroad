@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
+import 'package:ostello_task/core/constants/my_list.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
+import 'package:ostello_task/providers/major_subject_provider.dart';
+import 'package:provider/provider.dart';
 
 class MajorSubjectScreen extends StatefulWidget {
   MajorSubjectScreen({Key? key});
@@ -29,7 +32,16 @@ class _MajorSubjectScreenState extends State<MajorSubjectScreen> {
             icon: const Icon(Icons.arrow_forward),
             color: MyColors.primaryColor,
             onPressed: () {
-              // Add your logic for the forward button
+              final selectedMajor = Provider.of<MajorSubjectProvider>(context, listen: false).selectedMajor;
+              if(selectedMajor != null) {
+                Navigator.pushNamed(context, MyRoutes.budgetScreen);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Please select a major subject.'),
+                  )
+                );
+              }
             },
           ),
           const SizedBox(width: 16.0),
@@ -50,42 +62,53 @@ class _MajorSubjectScreenState extends State<MajorSubjectScreen> {
                 ),
               ),
               const SizedBox(height: 24.0),
-              // Dropdown Button with border and end icon
+
               Container(
                 //padding: EdgeInsets.only(left: 16.0, right: 16.0),
                 decoration: BoxDecoration(
                   border: Border.all(color: MyColors.lightGreyColor, width: 1,),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: DropdownButton<String>(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  hint: const Text('Select Program', style: TextStyle(color: MyColors.lightGreyColor),),
-                  value: selectedMajor,
-                  isExpanded: true,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14
-                  ),
-                  underline: const SizedBox(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      selectedMajor = newValue;
-                    });
-                  },
-                  items: majors.map((String major) {
-                    return DropdownMenuItem<String>(
-                      value: major,
-                      child: Text(major),
+                child: Consumer<MajorSubjectProvider>(
+                  builder: (context, majorSubjectProvider, child) {
+                    return DropdownButton<String>(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      hint: const Text('Select Program', style: TextStyle(color: MyColors.lightGreyColor),),
+                      value: majorSubjectProvider.selectedMajor,
+                      isExpanded: true,
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14
+                      ),
+                      underline: const SizedBox(),
+                      onChanged: (String? newValue) {
+                        majorSubjectProvider.selectMajor(newValue);
+                      },
+                      items: MyList.majors.map((String major) {
+                        return DropdownMenuItem<String>(
+                          value: major,
+                          child: Text(major),
+                        );
+                      }).toList(),
+                      icon: const Icon(Icons.keyboard_arrow_down_outlined, color: MyColors.lightGreyColor,), // Align icon to the end
+                      iconSize: 24.0, // Adjust icon size
                     );
-                  }).toList(),
-                  icon: const Icon(Icons.keyboard_arrow_down_outlined, color: MyColors.lightGreyColor,), // Align icon to the end
-                  iconSize: 24.0, // Adjust icon size
+                  },
                 ),
               ),
               const Spacer(),
               CustomButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, MyRoutes.budgetScreen);
+                  final selectedMajor = Provider.of<MajorSubjectProvider>(context, listen: false).selectedMajor;
+                  if(selectedMajor != null) {
+                    Navigator.pushNamed(context, MyRoutes.budgetScreen);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please select a major subject.'),
+                        )
+                    );
+                  }
                 },
               ),
             ],
@@ -96,17 +119,5 @@ class _MajorSubjectScreenState extends State<MajorSubjectScreen> {
   }
 
   // Define your list of majors here
-  final List<String> majors = [
-    'Computer Science',
-    'Electrical Engineering',
-    'Psychology',
-    'Biology',
-    'Chemistry',
-    'Mathematics',
-    'Business Administration',
-    // Add more majors as needed
-  ];
 
-  // Variable to store the selected major
-  String? selectedMajor;
 }

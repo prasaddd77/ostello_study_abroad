@@ -4,9 +4,11 @@ import 'package:ostello_task/presentation/screens/budget_screen.dart';
 import 'package:ostello_task/presentation/screens/countries_screen.dart';
 import 'package:ostello_task/presentation/screens/degree_screen.dart';
 import 'package:ostello_task/presentation/screens/major_subject_screen.dart';
+import 'package:ostello_task/providers/major_subject_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/country_provider.dart';
+import 'providers/degree_provider.dart';
 import 'providers/scholarship_provider.dart';
 import 'providers/slider_provider.dart';
 
@@ -16,6 +18,9 @@ void main() {
       ChangeNotifierProvider(create: (_) => SliderProvider()),
       ChangeNotifierProvider(create: (_) => ScholarshipProvider()),
       ChangeNotifierProvider(create: (_) => CountryProvider()),
+      ChangeNotifierProvider(create: (_) => DegreeProvider()),
+      ChangeNotifierProvider(create: (_) => MajorSubjectProvider()),
+
     ],
       child: const MyApp())
   );
