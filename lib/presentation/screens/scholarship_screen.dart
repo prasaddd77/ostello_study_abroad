@@ -57,7 +57,7 @@ class _ScholarshipScreenState extends State<ScholarshipScreen> {
                 builder: (context, scholarshipProvider, child) {
                   return CustomContainer(
                     text: "Yes",
-                    imagePath: 'assets/images/ok.png',
+                    imagePath: 'lib/core/assets/images/ok.png',
                     isSelected: scholarshipProvider.isYesSelected,
                     onTap: (selected) {
                       if (selected) {
@@ -72,7 +72,7 @@ class _ScholarshipScreenState extends State<ScholarshipScreen> {
                 builder: (context, scholarshipProvider, child) {
                   return CustomContainer(
                     text: "No",
-                    imagePath: 'assets/images/no.png',
+                    imagePath: 'lib/core/assets/images/no.png',
                     isSelected: scholarshipProvider.isNoSelected,
                     onTap: (selected) {
                       if (selected) {

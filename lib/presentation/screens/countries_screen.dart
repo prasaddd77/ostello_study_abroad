@@ -5,11 +5,15 @@ import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/common_widgets/country_widget.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
+import 'package:ostello_task/providers/country_provider.dart';
+import 'package:provider/provider.dart';
 
 class CountryScreen extends StatelessWidget {
-  const CountryScreen({super.key});
+  const CountryScreen({Key? key});
+
   @override
   Widget build(BuildContext context) {
+    print('build');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -17,15 +21,24 @@ class CountryScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           color: MyColors.primaryColor,
           onPressed: () {
-            // Add your logic for the back button
-          },
+          }
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.arrow_forward),
             color: MyColors.primaryColor,
             onPressed: () {
-              // Add your logic for the forward button
+              final selectedCountry = Provider.of<CountryProvider>(context, listen: false).selectedCountry;
+
+              if (selectedCountry.isNotEmpty) {
+                Navigator.pushNamed(context, MyRoutes.degreeScreen);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Please select a country.'),
+                  ),
+                );
+              }
             },
           ),
           const SizedBox(width: 16.0),
@@ -41,7 +54,8 @@ class CountryScreen extends StatelessWidget {
               const SizedBox(height: 16.0),
               RichText(
                 text: const TextSpan(
-                  text: 'In which corner of the world does your curiosity set its gaze? ',
+                  text:
+                  'In which corner of the world does your curiosity set its gaze? ',
                   style: TextStyle(fontSize: 17.0, color: Colors.black),
                   children: [
                     TextSpan(
@@ -51,7 +65,6 @@ class CountryScreen extends StatelessWidget {
                   ],
                 ),
               ),
-
               const SizedBox(height: 16.0),
               Flexible(
                 child: GridView.builder(
@@ -60,22 +73,49 @@ class CountryScreen extends StatelessWidget {
                     crossAxisSpacing: 8.0,
                     mainAxisSpacing: 8.0,
                   ),
-                  itemCount: 6,
+                  itemCount: MyList.countryNames.length,
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
                   itemBuilder: (context, index) {
-                    return CountryWidget(
-                      countryName: MyList.countryNames[index],
-                      flagImagePath: MyList.imageList[index],
+                    return Consumer<CountryProvider>(
+                      builder: (context, countryProvider, child) {
+                        return GestureDetector(
+                          onTap: () {
+                            if(countryProvider.selectedCountry.isNotEmpty) {
+                              countryProvider.deselectCountry();
+                            } else {
+                              countryProvider.selectCountry(
+                                MyList.countryNames[index],
+                              );
+                            }
+
+                            print('country: ${countryProvider.selectedCountry}');
+                          },
+                          child: CountryWidget(
+                            countryName: MyList.countryNames[index],
+                            flagImagePath: MyList.imageList[index],
+                            isSelected: countryProvider.selectedCountry ==
+                                MyList.countryNames[index],
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
               ),
-              // const Spacer(),
               const SizedBox(height: 8,),
               CustomButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, MyRoutes.degreeScreen);
+                  final selectedCountry = Provider.of<CountryProvider>(context, listen: false).selectedCountry;
+                  if (selectedCountry.isNotEmpty) {
+                    Navigator.pushNamed(context, MyRoutes.degreeScreen);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please select a country.'),
+                      ),
+                    );
+                  }
                 },
               ),
             ],

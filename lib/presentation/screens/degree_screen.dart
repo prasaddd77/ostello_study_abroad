@@ -24,7 +24,7 @@ class DegreeScreen extends StatelessWidget {
             icon: const Icon(Icons.arrow_forward),
             color: MyColors.primaryColor,
             onPressed: () {
-              // Add your logic for the forward button
+              
             },
           ),
           const SizedBox(width: 16.0),
@@ -54,18 +54,18 @@ class DegreeScreen extends StatelessWidget {
                 children: [
                   // Background Image
                   Image.asset(
-                    'assets/images/dotted_line.png',
+                    'lib/core/assets/images/dotted_line.png',
                     fit: BoxFit.fill,
                     width: MediaQuery.of(context).size.width,
                     height: double.infinity,
                   ),
-                  // Additional Image Assets
+
                   Positioned(
                     top: 187.0,
                     left: 20.0,
                     child: GestureDetector(
                       child: Image.asset(
-                        'assets/images/bachelors.png',
+                        'lib/core/assets/images/bachelors.png',
                         width: 100.0,
                         height: 100.0,
                       ),
@@ -76,7 +76,7 @@ class DegreeScreen extends StatelessWidget {
                     right: 160.0,
                     child: GestureDetector(
                       child: Image.asset(
-                        'assets/images/masters.png',
+                        'lib/core/assets/images/masters.png',
                         width: 100.0,
                         height: 100.0,
                       ),
@@ -87,7 +87,7 @@ class DegreeScreen extends StatelessWidget {
                     right: 40,
                     child: GestureDetector(
                       child: Image.asset(
-                        'assets/images/phd.png',
+                        'lib/core/assets/images/phd.png',
                         width: 100.0,
                         height: 100.0,
                       ),
