@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/screens/budget_screen.dart';
 import 'package:ostello_task/presentation/screens/countries_screen.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
@@ -6,6 +7,8 @@ import 'package:ostello_task/providers/degree_provider.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
 import 'package:ostello_task/presentation/common_widgets/degree_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/widgets.dart';
+
 
 class DegreeScreen extends StatelessWidget {
   const DegreeScreen({Key? key});
@@ -39,7 +42,7 @@ class DegreeScreen extends StatelessWidget {
               }
             },
           ),
-          const SizedBox(width: 16.0),
+          // SizedBox(width: 16.0.w),
         ],
       ),
       body: SafeArea(
@@ -47,7 +50,7 @@ class DegreeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              padding: EdgeInsets.symmetric(horizontal: 24),
               child: CustomRow(),
             ),
             const SizedBox(height: 16.0),
@@ -68,27 +71,28 @@ class DegreeScreen extends StatelessWidget {
                   Image.asset(
                     'lib/core/assets/images/dotted_line.png',
                     fit: BoxFit.fill,
-                    width: MediaQuery.of(context).size.width,
+                    width: double.infinity,
                     height: double.infinity,
                   ),
 
                   DegreeWidget(
                     degree: 'Bachelors',
                     imagePath: 'lib/core/assets/images/bachelors.png',
-                    top: 187.0,
-                    left: 20.0,
+                    top: MediaQuery.of(context).size.height * 0.16,
+                    left: MediaQuery.of(context).size.width * 0.08,
                   ),
                   DegreeWidget(
                     degree: 'Masters',
                     imagePath: 'lib/core/assets/images/masters.png',
-                    top: 120.0,
-                    right: 160.0,
+                    top: MediaQuery.of(context).size.height * 0.11,
+                    right: MediaQuery.of(context).size.width * 0.39,
                   ),
                   DegreeWidget(
                     degree: 'PhD',
                     imagePath: 'lib/core/assets/images/phd.png',
-                    top: 0,
-                    right: 40,
+                    top: MediaQuery.of(context).size.height * 0.001,
+                    //left: MediaQuery.of(context).size.width * 0.6,
+                    right: MediaQuery.of(context).size.width * 0.12,
                   ),
                 ],
               ),

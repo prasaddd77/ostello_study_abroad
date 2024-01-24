@@ -34,7 +34,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
               // Add your logic for the forward button
             },
           ),
-          const SizedBox(width: 16.0),
+          //const SizedBox(width: 16.0),
         ],
       ),
       body: SafeArea(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/constants/my_list.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
@@ -44,12 +45,12 @@ class _MajorSubjectScreenState extends State<MajorSubjectScreen> {
               }
             },
           ),
-          const SizedBox(width: 16.0),
+          //SizedBox(width: 16),
         ],
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: EdgeInsets.all(24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -118,6 +119,5 @@ class _MajorSubjectScreenState extends State<MajorSubjectScreen> {
     );
   }
 
-  // Define your list of majors here
 
 }

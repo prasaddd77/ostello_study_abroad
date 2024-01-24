@@ -54,9 +54,8 @@ class DegreeWidget extends StatelessWidget {
               ),
               child: Image.asset(
                 imagePath,
-                width: 100.0,
-                height: 100.0,
-                //color: isDegreeSelected ? MyColors.primaryColor : null,
+                width: 80.0,
+                height: 80.0,
               ),
             ),
           ),
