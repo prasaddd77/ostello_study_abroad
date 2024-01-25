@@ -35,8 +35,8 @@ class CountryWidget extends StatelessWidget {
           ),
           child: Image.asset(
             flagImagePath,
-            width: 100.0,
-            height: 100.0,
+            width: 114.0,
+            height: 72.0,
           ),
         ),
         const SizedBox(height: 8.0),

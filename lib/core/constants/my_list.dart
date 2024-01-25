@@ -18,6 +18,11 @@ class MyList {
     'Chemistry',
     'Mathematics',
     'Business Administration',
-
+  ];
+  static const List<String> year = [
+    '2024',
+    '2025',
+    '2026',
+    '2027',
   ];
 }
