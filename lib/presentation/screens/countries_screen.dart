@@ -21,6 +21,7 @@ class CountryScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           color: MyColors.primaryColor,
           onPressed: () {
+            Navigator.pushNamed(context, MyRoutes.homeScreen);
           }
         ),
         actions: [

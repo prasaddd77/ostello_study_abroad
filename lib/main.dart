@@ -1,17 +1,12 @@
-
-
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
-import 'package:ostello_task/presentation/screens/budget_screen.dart';
-import 'package:ostello_task/presentation/screens/countries_screen.dart';
-import 'package:ostello_task/presentation/screens/degree_screen.dart';
-import 'package:ostello_task/presentation/screens/major_subject_screen.dart';
 import 'package:ostello_task/providers/major_subject_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'core/utils/pref_utils.dart';
 import 'providers/country_provider.dart';
 import 'providers/degree_provider.dart';
 import 'providers/exam_providers/exam1_provider.dart';
@@ -19,13 +14,21 @@ import 'providers/exam_providers/exam2_provider.dart';
 import 'providers/exam_providers/exam3_provider.dart';
 import 'providers/exam_providers/exam4_provider.dart';
 import 'providers/exam_providers/exam5_provider.dart';
+import 'providers/home_page_provider.dart';
 import 'providers/scholarship_provider.dart';
 import 'providers/slider_provider.dart';
 
 void main() async {
-  runApp(
-    MultiProvider(
+  WidgetsFlutterBinding.ensureInitialized();
+  Future.wait([
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]),
+    PrefUtils().init()
+  ]).then((value) {
+    runApp(MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => HomePageProvider()),
         ChangeNotifierProvider(create: (_) => SliderProvider()),
         ChangeNotifierProvider(create: (_) => ScholarshipProvider()),
         ChangeNotifierProvider(create: (_) => CountryProvider()),
@@ -45,8 +48,33 @@ void main() async {
       child: DevicePreview(
         builder: (context) => MyApp(),
       ),
-    ),
-  );
+    ),);
+  });
+  // runApp(
+  //   MultiProvider(
+  //     providers: [
+  //       ChangeNotifierProvider(create: (_) => HomePageProvider()),
+  //       ChangeNotifierProvider(create: (_) => SliderProvider()),
+  //       ChangeNotifierProvider(create: (_) => ScholarshipProvider()),
+  //       ChangeNotifierProvider(create: (_) => CountryProvider()),
+  //       ChangeNotifierProvider(create: (_) => DegreeProvider()),
+  //       ChangeNotifierProvider(create: (_) => MajorSubjectProvider()),
+  //       ChangeNotifierProvider(create: (_) => Exam1Provider()),
+  //       ChangeNotifierProvider(create: (_) => Exam2Provider()),
+  //       ChangeNotifierProvider(create: (_) => Exam3Provider()),
+  //       ChangeNotifierProvider(create: (_) => Exam4Provider()),
+  //       ChangeNotifierProvider(create: (_) => Exam5Provider()),
+  //     ],
+  //     // Uncomment the code below when you do not want to use the device preview
+  //
+  //     // child: const MyApp(),
+  //
+  //     // Comment the code below when you do not want to use the device preview
+  //     child: DevicePreview(
+  //       builder: (context) => MyApp(),
+  //     ),
+  //   ),
+  // );
 }
 
 class MyApp extends StatelessWidget {
@@ -70,7 +98,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         //home: const CountryScreen(),
-        initialRoute: MyRoutes.exam1Screen,
+        initialRoute: MyRoutes.homeScreen,
         onGenerateRoute: MyRoutes.generateRoute,
       ),
     );

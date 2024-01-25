@@ -7,12 +7,14 @@ import 'package:ostello_task/presentation/screens/exams_screens/exam2_screen.dar
 import 'package:ostello_task/presentation/screens/exams_screens/exam3_screen.dart';
 import 'package:ostello_task/presentation/screens/exams_screens/exam4_screen.dart';
 import 'package:ostello_task/presentation/screens/exams_screens/exam5_screen.dart';
+import 'package:ostello_task/presentation/screens/home_screen.dart';
 import 'package:ostello_task/presentation/screens/major_subject_screen.dart';
 import 'package:ostello_task/presentation/screens/scholarship_screen.dart';
 
 
 class MyRoutes {
-  static const String countryScreen = '/';
+  static const String homeScreen = '/';
+  static const String countryScreen = '/country';
   static const String budgetScreen = '/budget';
   static const String degreeScreen = '/degree';
   static const String majorSubjectScreen = '/major_subject';
@@ -25,6 +27,8 @@ class MyRoutes {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case homeScreen:
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       case countryScreen:
         return MaterialPageRoute(builder: (_) => CountryScreen());
       case budgetScreen:
