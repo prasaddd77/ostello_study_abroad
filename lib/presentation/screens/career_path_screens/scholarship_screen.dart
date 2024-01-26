@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
+import 'package:ostello_task/data/data_models/study_abroad_data/study_abroad_data.dart';
+import 'package:ostello_task/data/repositories/http_service.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_container.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
+import 'package:ostello_task/presentation/common_widgets/dialog_boxes/success_failure_dialog.dart';
 import 'package:ostello_task/providers/career_path_providers/scholarship_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +20,7 @@ class ScholarshipScreen extends StatefulWidget {
 class _ScholarshipScreenState extends State<ScholarshipScreen> {
   @override
   Widget build(BuildContext context) {
+    HttpService httpService = HttpService();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -85,7 +89,23 @@ class _ScholarshipScreenState extends State<ScholarshipScreen> {
               const Spacer(),
               CustomButton(
                 title: 'Submit',
-                onPressed: () {},
+                onPressed: () async{
+                  final isYesSelected = Provider.of<ScholarshipProvider>(context, listen: false).isYesSelected;
+                  StudyAbroadData.updateScholarship(isYesSelected);
+                  final jsonData = StudyAbroadData.getJsonData();
+                  print(jsonData);
+                  bool response = await httpService.createStudyAbroadOfStudentPost(jsonData);
+
+                  if (response) {
+                    CustomDialog.showSuccessDialog(context,  () {
+                      Navigator.popUntil(context, ModalRoute.withName(MyRoutes.homeScreen));
+                    });
+                  } else {
+                    CustomDialog.showFailureDialog(context, "Demo Booking Failed!", () {
+                      Navigator.popUntil(context, ModalRoute.withName(MyRoutes.homeScreen));
+                    });
+                  }
+                },
               ),
             ],
           ),

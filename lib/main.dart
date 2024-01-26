@@ -44,12 +44,12 @@ void main() async {
       ],
       // Uncomment the code below when you do not want to use the device preview
 
-      child: const MyApp(),
+      //child: const MyApp(),
 
-      // Comment the code below when you do not want to use the device preview
-      // child: DevicePreview(
-      //   builder: (context) => MyApp(),
-      // ),
+      //Comment the code below when you do not want to use the device preview
+      child: DevicePreview(
+        builder: (context) => MyApp(),
+      ),
     ),);
   });
   // runApp(

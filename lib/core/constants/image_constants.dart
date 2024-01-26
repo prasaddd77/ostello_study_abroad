@@ -64,4 +64,8 @@ class ImageConstant {
   static String dropdown_icon = '$imagePath/dropdown.svg';
 
   static String avatar = '$imagePath/profile.svg';
+
+  static String success_icon = '$imagePath/success.png';
+
+  static String failure_icon = '$imagePath/failure.png';
 }

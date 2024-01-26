@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/constants/my_list.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
+import 'package:ostello_task/data/data_models/study_abroad_data/create_study_abroad_student_model.dart';
+import 'package:ostello_task/data/data_models/study_abroad_data/study_abroad_data.dart';
 import 'package:ostello_task/presentation/common_widgets/country_widget.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
@@ -13,6 +15,7 @@ class CountryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     print('build');
     return Scaffold(
       appBar: AppBar(
@@ -32,6 +35,7 @@ class CountryScreen extends StatelessWidget {
               final selectedCountry = Provider.of<CountryProvider>(context, listen: false).selectedCountry;
 
               if (selectedCountry.isNotEmpty) {
+                StudyAbroadData.updateCountry(selectedCountry);
                 Navigator.pushNamed(context, MyRoutes.degreeScreen);
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -109,6 +113,7 @@ class CountryScreen extends StatelessWidget {
                 onPressed: () {
                   final selectedCountry = Provider.of<CountryProvider>(context, listen: false).selectedCountry;
                   if (selectedCountry.isNotEmpty) {
+                    StudyAbroadData.updateCountry(selectedCountry);
                     Navigator.pushNamed(context, MyRoutes.degreeScreen);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(

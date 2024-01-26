@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/constants/my_list.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
+import 'package:ostello_task/data/data_models/study_abroad_data/create_study_abroad_student_model.dart';
+import 'package:ostello_task/data/data_models/study_abroad_data/study_abroad_data.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
 import 'package:ostello_task/providers/career_path_providers/major_subject_provider.dart';
@@ -35,6 +37,7 @@ class _MajorSubjectScreenState extends State<MajorSubjectScreen> {
             onPressed: () {
               final selectedMajor = Provider.of<MajorSubjectProvider>(context, listen: false).selectedMajor;
               if(selectedMajor != null) {
+                StudyAbroadData.updateMajorSubject(selectedMajor);
                 Navigator.pushNamed(context, MyRoutes.budgetScreen);
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -102,6 +105,7 @@ class _MajorSubjectScreenState extends State<MajorSubjectScreen> {
                 onPressed: () {
                   final selectedMajor = Provider.of<MajorSubjectProvider>(context, listen: false).selectedMajor;
                   if(selectedMajor != null) {
+                    StudyAbroadData.updateMajorSubject(selectedMajor);
                     Navigator.pushNamed(context, MyRoutes.budgetScreen);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(

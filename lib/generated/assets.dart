@@ -24,6 +24,8 @@ class Assets {
   static const String constantsImageConstants = 'lib/core/constants/image_constants.dart';
   static const String constantsMyColors = 'lib/core/constants/my_colors.dart';
   static const String constantsMyList = 'lib/core/constants/my_list.dart';
+  static const String dataUrls = 'lib/data/urls.dart';
+  static const String dialogBoxesSuccessFailureDialog = 'lib/presentation/common_widgets/dialog_boxes/success_failure_dialog.dart';
   static const String examProvidersExam1Provider = 'lib/providers/exam_providers/exam1_provider.dart';
   static const String examProvidersExam2Provider = 'lib/providers/exam_providers/exam2_provider.dart';
   static const String examProvidersExam3Provider = 'lib/providers/exam_providers/exam3_provider.dart';
@@ -66,6 +68,7 @@ class Assets {
   static const String imagesHouse = 'lib/core/assets/images/house.png';
   static const String imagesIelts = 'lib/core/assets/images/ielts.png';
   static const String imagesImageNotFound = 'lib/core/assets/images/image_not_found.png';
+  static const String imagesImg = 'lib/core/assets/images/failure.png';
   static const String imagesImgArrowLeft = 'lib/core/assets/images/img_arrow_left.svg';
   static const String imagesImgBooksGraduation = 'lib/core/assets/images/img_books_graduation.png';
   static const String imagesImgEllipse215 = 'lib/core/assets/images/img_ellipse_215.png';
@@ -100,13 +103,17 @@ class Assets {
   static const String imagesRocket = 'lib/core/assets/images/rocket.png';
   static const String imagesScholarship = 'lib/core/assets/images/scholarship.png';
   static const String imagesSpiral = 'lib/core/assets/images/spiral.png';
+  static const String imagesSuccess = 'lib/core/assets/images/success.png';
   static const String imagesToefl = 'lib/core/assets/images/toefl.png';
   static const String imagesUk = 'lib/core/assets/images/uk.png';
   static const String imagesUniversity = 'lib/core/assets/images/university.png';
   static const String imagesUsa = 'lib/core/assets/images/usa.png';
   static const String libMain = 'lib/main.dart';
   static const String providersHomePageProvider = 'lib/providers/home_page_provider.dart';
+  static const String repositoriesHttpService = 'lib/data/repositories/http_service.dart';
   static const String routesMyRoutes = 'lib/core/routes/my_routes.dart';
+  static const String studyAbroadDataCreateStudyAbroadStudentModel = 'lib/data/data_models/study_abroad_data/create_study_abroad_student_model.dart';
+  static const String studyAbroadDataStudyAbroadData = 'lib/data/data_models/study_abroad_data/study_abroad_data.dart';
   static const String utilsAppDecorations = 'lib/core/utils/app_decorations.dart';
   static const String utilsPrefUtils = 'lib/core/utils/pref_utils.dart';
   static const String utilsRadioButtoTextStyle = 'lib/core/utils/radio_butto_text_style.dart';

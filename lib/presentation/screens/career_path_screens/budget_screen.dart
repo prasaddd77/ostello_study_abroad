@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
+import 'package:ostello_task/data/data_models/study_abroad_data/create_study_abroad_student_model.dart';
+import 'package:ostello_task/data/data_models/study_abroad_data/study_abroad_data.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
 import 'package:ostello_task/providers/career_path_providers/slider_provider.dart';
@@ -31,7 +33,9 @@ class _BudgetScreenState extends State<BudgetScreen> {
             icon: const Icon(Icons.arrow_forward),
             color: MyColors.primaryColor,
             onPressed: () {
-              // Add your logic for the forward button
+              final budget = Provider.of<SliderProvider>(context, listen: false).endValue;
+              StudyAbroadData.updateBudget(budget.toString());
+             Navigator.pushNamed(context, MyRoutes.scholarshipScreen);
             },
           ),
           //const SizedBox(width: 16.0),
@@ -89,6 +93,9 @@ class _BudgetScreenState extends State<BudgetScreen> {
               const Spacer(),
               CustomButton(
                 onPressed: (){
+                  final budget = Provider.of<SliderProvider>(context, listen: false).endValue;
+                  StudyAbroadData.updateBudget(budget.toString());
+                  StudyAbroadData.updateStudentId();
                   Navigator.pushNamed(context, MyRoutes.scholarshipScreen);
                 },
               ),

@@ -1,0 +1,4 @@
+class MyUrls {
+  static const String baseUrl = 'http://backend-dev-env.eba-yyrnzjmd.ap-south-1.elasticbeanstalk.com';
+  static const String ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRkZjU1YzVmLTQxZjgtNDI0MS1iYjViLTA3MTA2N2IxYTk1NSIsIm5hbWUiOiJTdXBlciBBZG1pbiIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwidXNlcnR5cGUiOjEsInBob25lbnVtYmVyIjoiODI3MTQ2OTYzMSIsImlhdCI6MTY4ODIyNjU4MiwiZXhwIjoxNjg4MzEyOTgyfQ.j1d28RpGRnFbME_R0l-6bESVioeGFunzcy2ckD5naTg';
+}
