@@ -7,6 +7,7 @@ class Exam1Provider extends ChangeNotifier {
 
   void setEnglishTestTaken(bool value) {
     _isEnglishTestTaken = value;
+    print(isEnglishTestTaken);
     notifyListeners();
   }
 }

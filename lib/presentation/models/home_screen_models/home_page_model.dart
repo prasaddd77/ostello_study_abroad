@@ -1,11 +1,11 @@
-import 'package:ostello_task/core/utils/image_constants.dart';
+import 'package:ostello_task/core/constants/image_constants.dart';
 
-import 'explore_universities_item_model.dart';
+import 'homescren_card_item_model.dart';
 import 'stack_item_model.dart';
 
 class HomePageModel {
-  List<ExploreuniversitiesItemModel> exploreuniversitiesItemList = [
-    ExploreuniversitiesItemModel(
+  List<HomeScreenCardItemModel> homeScreenCardItemList = [
+    HomeScreenCardItemModel(
         height: 100,
         width: 109,
         image: ImageConstant.imgEllipse215,
@@ -13,7 +13,7 @@ class HomePageModel {
         descriptionText:
             "Explore 2000+ foreign universities effortlessly with convenient filtering and sorting.",
         exploreImage: ImageConstant.imgImage13),
-    ExploreuniversitiesItemModel(
+    HomeScreenCardItemModel(
         height: 108,
         width: 108,
         image: ImageConstant.imgEllipse215123x128,
@@ -21,7 +21,7 @@ class HomePageModel {
         descriptionText:
             "Tailor your GRE prep with live classes, mock tests, practice questions, and more.",
         exploreImage: ImageConstant.imgExamHd),
-    ExploreuniversitiesItemModel(
+    HomeScreenCardItemModel(
       height: 126,
       width: 126,
       image: ImageConstant.imgEllipse215,
@@ -30,7 +30,7 @@ class HomePageModel {
           "Discover ideal universities and programs using AI to match your profile.",
       exploreImage: ImageConstant.imgFloatingQuestion,
     ),
-    ExploreuniversitiesItemModel(
+    HomeScreenCardItemModel(
         height: 87,
         width: 133,
         image: ImageConstant.imgEllipse215,

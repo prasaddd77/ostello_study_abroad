@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 
 class CustomButton extends StatelessWidget {
-  final VoidCallback onPressed; // Add this line
+  final String title;
+  final VoidCallback onPressed;
 
-  // Add the required parameter to the constructor
   const CustomButton({
     Key? key,
     required this.onPressed,
+    this.title = 'Continue'
   }) : super(key: key);
 
   @override
@@ -23,9 +24,9 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(27.0),
           ),
         ),
-        child: const Text(
-          'Continue',
-          style: TextStyle(fontSize: 16.0, color: Colors.white),
+        child: Text(
+          title,
+          style: const TextStyle(fontSize: 16.0, color: Colors.white),
         ),
       ),
     );

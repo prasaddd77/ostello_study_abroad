@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
-import 'package:ostello_task/providers/major_subject_provider.dart';
+import 'package:ostello_task/providers/career_path_providers/major_subject_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'core/utils/pref_utils.dart';
-import 'providers/country_provider.dart';
-import 'providers/degree_provider.dart';
+import 'providers/career_path_providers/country_provider.dart';
+import 'providers/career_path_providers/degree_provider.dart';
 import 'providers/exam_providers/exam1_provider.dart';
 import 'providers/exam_providers/exam2_provider.dart';
 import 'providers/exam_providers/exam3_provider.dart';
 import 'providers/exam_providers/exam4_provider.dart';
-import 'providers/exam_providers/exam5_provider.dart';
+import 'providers/exam_providers/exam6_provider.dart';
+import 'providers/exam_providers/exma5_provider.dart';
 import 'providers/home_page_provider.dart';
-import 'providers/scholarship_provider.dart';
-import 'providers/slider_provider.dart';
+import 'providers/career_path_providers/scholarship_provider.dart';
+import 'providers/career_path_providers/slider_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,15 +40,16 @@ void main() async {
         ChangeNotifierProvider(create: (_) => Exam3Provider()),
         ChangeNotifierProvider(create: (_) => Exam4Provider()),
         ChangeNotifierProvider(create: (_) => Exam5Provider()),
+        ChangeNotifierProvider(create: (_) => Exam6Provider()),
       ],
       // Uncomment the code below when you do not want to use the device preview
 
-      // child: const MyApp(),
+      child: const MyApp(),
 
       // Comment the code below when you do not want to use the device preview
-      child: DevicePreview(
-        builder: (context) => MyApp(),
-      ),
+      // child: DevicePreview(
+      //   builder: (context) => MyApp(),
+      // ),
     ),);
   });
   // runApp(

@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ostello_task/core/utils/app_decorations.dart';
-import 'package:ostello_task/core/utils/image_constants.dart';
+import 'package:ostello_task/core/constants/image_constants.dart';
 import 'package:ostello_task/core/utils/theme_helper.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_image_view.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
-import 'package:ostello_task/presentation/models/explore_universities_item_model.dart';
-import 'package:ostello_task/presentation/models/stack_item_model.dart';
-import 'package:ostello_task/presentation/screens/home_screen/widgets/explore_universities_item_widget.dart';
-import 'package:ostello_task/presentation/screens/home_screen/widgets/stack_item_widget.dart';
+import 'package:ostello_task/presentation/models/home_screen_models/homescren_card_item_model.dart';
+import 'package:ostello_task/presentation/models/home_screen_models/stack_item_model.dart';
+import 'package:ostello_task/presentation/screens/home_screen/home_screen_widgets/homescreen_card_item_widget.dart';
 import 'package:ostello_task/providers/home_page_provider.dart';
 import 'package:provider/provider.dart';
+
+import 'home_screen_widgets/stack_item_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -37,11 +38,11 @@ class HomeScreen extends StatelessWidget {
                         Row(
                           children: [
                             SvgPicture.asset(
-                              'assets/images/img_iconsax_linear_location.svg',
+                              ImageConstant.location_icon,
                               width: 19,
                               height: 19,
                               clipBehavior: Clip.antiAlias,
-                              color: const Color(0xFF161B1F),
+                              //color: const Color(0xFF161B1F),
                             ),
                             const SizedBox(
                               width: 3,
@@ -62,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                             GestureDetector(
                               onTap: () {},
                               child: SvgPicture.asset(
-                                "assets/images/dropdown.svg",
+                                ImageConstant.dropdown_icon,
                                 width: 5,
                                 height: 9,
                                 color: const Color(0xFF161B1F),
@@ -90,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 20,
                         child: SvgPicture.asset(
-                          "assets/images/profile.svg",
+                          ImageConstant.avatar,
                         ),
                       ),
                     )
@@ -389,7 +390,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              _buildExploreUniversities(context),
+              _buildHomeScreenCard(context),
               const SizedBox(
                 height: 50,
               ),
@@ -418,7 +419,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildExploreUniversities(BuildContext context) {
+  Widget _buildHomeScreenCard(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Consumer<HomePageProvider>(
@@ -426,16 +427,13 @@ class HomeScreen extends StatelessWidget {
           return ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            separatorBuilder: (
-              context,
-              index,
-            ) {
+            separatorBuilder: (context, index) {
               return const SizedBox(height: 28);
             },
-            itemCount: provider.homePageModelObj.exploreuniversitiesItemList.length,
+            itemCount: provider.homePageModelObj.homeScreenCardItemList.length,
             itemBuilder: (context, index) {
-              ExploreuniversitiesItemModel model = provider.homePageModelObj.exploreuniversitiesItemList[index];
-              return ExploreuniversitiesItemWidget(model);
+              HomeScreenCardItemModel model = provider.homePageModelObj.homeScreenCardItemList[index];
+              return HomeScreenCardItemWidget(homeScreenCardItemModelObj: model, index: index,);
             },
           );
         },
@@ -462,11 +460,8 @@ class HomeScreen extends StatelessWidget {
               },
               itemCount: provider.homePageModelObj.stackItemList.length,
               itemBuilder: (context, index) {
-                StackItemModel model =
-                    provider.homePageModelObj.stackItemList[index];
-                return StackItemWidget(
-                  model,
-                );
+                StackItemModel model = provider.homePageModelObj.stackItemList[index];
+                return StackItemWidget(model);
               },
             );
           },

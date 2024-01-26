@@ -5,7 +5,7 @@ import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/common_widgets/country_widget.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
-import 'package:ostello_task/providers/country_provider.dart';
+import 'package:ostello_task/providers/career_path_providers/country_provider.dart';
 import 'package:provider/provider.dart';
 
 class CountryScreen extends StatelessWidget {

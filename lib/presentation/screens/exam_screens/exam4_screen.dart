@@ -1,46 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
+import 'package:ostello_task/core/utils/radio_butto_text_style.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
 import 'package:ostello_task/providers/exam_providers/exam4_provider.dart';
 import 'package:provider/provider.dart';
 
-class Exam4Screen extends StatefulWidget {
-  const Exam4Screen({super.key});
+class Exam4Screen extends StatelessWidget {
+  const Exam4Screen({Key? key}) : super(key: key);
 
-  @override
-  State<Exam4Screen> createState() => _Exam4ScreenState();
-}
-
-class _Exam4ScreenState extends State<Exam4Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          color: MyColors.primaryColor,
-          onPressed: () {
-            Navigator.pushNamed(context, MyRoutes.exam3Screen);
+        leading: Consumer<Exam4Provider>(
+          builder: (context, provider, child) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              color: MyColors.primaryColor,
+              onPressed: () {
+                Navigator.pushNamed(context, MyRoutes.exam3Screen);
+              },
+            );
           },
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.arrow_forward),
-            color: MyColors.primaryColor,
-            onPressed: () {
-              final isAware = Provider.of<Exam4Provider>(context, listen: false).isAware;
-              if (isAware || !isAware) {
-                Navigator.pushNamed(context, MyRoutes.exam5Screen);
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Please select a value.'),
-                  ),
-                );
-              }
+          Consumer<Exam4Provider>(
+            builder: (context, provider, child) {
+              return IconButton(
+                icon: const Icon(Icons.arrow_forward),
+                color: MyColors.primaryColor,
+                onPressed: () {
+                  final isAware = provider.isAware;
+                  if (isAware || !isAware) {
+                    Navigator.pushNamed(context, MyRoutes.exam5Screen);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please select a value.'),
+                      ),
+                    );
+                  }
+                },
+              );
             },
           ),
           const SizedBox(width: 16.0),
@@ -60,7 +64,7 @@ class _Exam4ScreenState extends State<Exam4Screen> {
                   style: TextStyle(fontSize: 17.0, color: Colors.black),
                 ),
               ),
-              const SizedBox(height: 42.0),
+              const SizedBox(height: 24.0),
               Consumer<Exam4Provider>(
                 builder: (context, provider, child) => Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -72,7 +76,7 @@ class _Exam4ScreenState extends State<Exam4Screen> {
                         provider.setAware(value!);
                       },
                     ),
-                    const Text('Yes'),
+                    const Text('Yes', style: RadioButtonTextStyle.textStyle),
                     const SizedBox(width: 64.0),
                     Radio<bool>(
                       value: false,
@@ -81,23 +85,27 @@ class _Exam4ScreenState extends State<Exam4Screen> {
                         provider.setAware(value!);
                       },
                     ),
-                    const Text('No'),
+                    const Text('No', style: RadioButtonTextStyle.textStyle),
                   ],
                 ),
               ),
               const Spacer(),
-              CustomButton(
-                onPressed: () {
-                  final isAware = Provider.of<Exam4Provider>(context, listen: false).isAware;
-                  if (isAware || !isAware) {
-                    Navigator.pushNamed(context, MyRoutes.exam5Screen);
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Please select a value.'),
-                      ),
-                    );
-                  }
+              Consumer<Exam4Provider>(
+                builder: (context, provider, child) {
+                  return CustomButton(
+                    onPressed: () {
+                      final isAware = provider.isAware;
+                      if (isAware || !isAware) {
+                        Navigator.pushNamed(context, MyRoutes.exam5Screen);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please select a value.'),
+                          ),
+                        );
+                      }
+                    },
+                  );
                 },
               ),
             ],

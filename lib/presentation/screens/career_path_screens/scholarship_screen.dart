@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
-import 'package:ostello_task/core/constants/my_list.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
-import 'package:ostello_task/presentation/common_widgets/custom_dropdown.dart';
+import 'package:ostello_task/presentation/common_widgets/custom_container.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
-import 'package:ostello_task/providers/exam_providers/exam5_provider.dart';
+import 'package:ostello_task/providers/career_path_providers/scholarship_provider.dart';
 import 'package:provider/provider.dart';
 
-class Exam5Screen extends StatefulWidget {
-  const Exam5Screen({super.key});
+class ScholarshipScreen extends StatefulWidget {
+  const ScholarshipScreen({super.key});
 
   @override
-  State<Exam5Screen> createState() => _Exam5ScreenState();
+  State<ScholarshipScreen> createState() => _ScholarshipScreenState();
 }
 
-class _Exam5ScreenState extends State<Exam5Screen> {
+class _ScholarshipScreenState extends State<ScholarshipScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +32,7 @@ class _Exam5ScreenState extends State<Exam5Screen> {
             icon: const Icon(Icons.arrow_forward),
             color: MyColors.primaryColor,
             onPressed: () {
-              // Add your logic for the forward button
+
             },
           ),
           const SizedBox(width: 16.0),
@@ -49,24 +48,43 @@ class _Exam5ScreenState extends State<Exam5Screen> {
               const SizedBox(height: 16.0),
               RichText(
                 text: const TextSpan(
-                  text: 'Have you decided when to take the required standardized test?',
+                  text: 'Are you looking for scholarship opportunities?',
                   style: TextStyle(fontSize: 17.0, color: Colors.black),
                 ),
               ),
-              const SizedBox(height: 24.0),
-              Consumer<Exam5Provider>(
-                builder: (context, provider, child) {
-                  return CustomDropdown(
-                    value: provider.selectedYear,
-                    onChanged: (String? newValue) {
-                      provider.selectYear(newValue);
+              const SizedBox(height: 42.0),
+              Consumer<ScholarshipProvider>(
+                builder: (context, scholarshipProvider, child) {
+                  return CustomContainer(
+                    text: "Yes",
+                    imagePath: 'lib/core/assets/images/ok.png',
+                    isSelected: scholarshipProvider.isYesSelected,
+                    onTap: (selected) {
+                      if (selected) {
+                        scholarshipProvider.selectYes();
+                      }
                     },
-                    items: MyList.year,
+                  );
+                },
+              ),
+              const SizedBox(height: 16,),
+              Consumer<ScholarshipProvider>(
+                builder: (context, scholarshipProvider, child) {
+                  return CustomContainer(
+                    text: "No",
+                    imagePath: 'lib/core/assets/images/no.png',
+                    isSelected: scholarshipProvider.isNoSelected,
+                    onTap: (selected) {
+                      if (selected) {
+                        scholarshipProvider.selectNo();
+                      }
+                    },
                   );
                 },
               ),
               const Spacer(),
               CustomButton(
+                title: 'Submit',
                 onPressed: () {},
               ),
             ],

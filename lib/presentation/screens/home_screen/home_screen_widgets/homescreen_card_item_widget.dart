@@ -3,17 +3,20 @@
 import 'package:flutter/material.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/core/utils/app_decorations.dart';
-import 'package:ostello_task/core/utils/image_constants.dart';
+import 'package:ostello_task/core/constants/image_constants.dart';
 import 'package:ostello_task/core/utils/theme_helper.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_icon_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_image_view.dart';
-import 'package:ostello_task/presentation/models/explore_universities_item_model.dart';
+import 'package:ostello_task/presentation/models/home_screen_models/homescren_card_item_model.dart';
+import 'package:ostello_task/presentation/screens/home_screen/home_screen_card_funtions/card_on_taps.dart';
 
-class ExploreuniversitiesItemWidget extends StatelessWidget {
-  ExploreuniversitiesItemModel exploreuniversitiesItemModelObj;
+class HomeScreenCardItemWidget extends StatelessWidget {
+  int index = 0;
+  HomeScreenCardItemModel homeScreenCardItemModelObj;
 
-  ExploreuniversitiesItemWidget(
-    this.exploreuniversitiesItemModelObj, {
+  HomeScreenCardItemWidget({
+    required this.homeScreenCardItemModelObj,
+    required this.index,
     Key? key,
   }) : super(key: key);
 
@@ -56,7 +59,7 @@ class ExploreuniversitiesItemWidget extends StatelessWidget {
                   child: CustomImageView(imagePath: ImageConstant.ellipsis214)),
             ),
             CustomImageView(
-              imagePath: exploreuniversitiesItemModelObj.image,
+              imagePath: homeScreenCardItemModelObj.image,
               height: 123,
               width: 128,
               alignment: Alignment.centerLeft,
@@ -72,13 +75,13 @@ class ExploreuniversitiesItemWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          exploreuniversitiesItemModelObj.exploreText!,
+                          homeScreenCardItemModelObj.exploreText!,
                           style: theme.textTheme.bodyLarge,
                         ),
                         SizedBox(
                           width: 147,
                           child: Text(
-                            exploreuniversitiesItemModelObj.descriptionText!,
+                            homeScreenCardItemModelObj.descriptionText!,
                             maxLines: 4,
                             overflow: TextOverflow.ellipsis,
                             style: theme.textTheme.bodySmall!.copyWith(
@@ -98,14 +101,14 @@ class ExploreuniversitiesItemWidget extends StatelessWidget {
                       children: [
                         CustomImageView(
                           imagePath:
-                              exploreuniversitiesItemModelObj.exploreImage,
-                          height: exploreuniversitiesItemModelObj.height,
-                          width: exploreuniversitiesItemModelObj.width,
+                              homeScreenCardItemModelObj.exploreImage,
+                          height: homeScreenCardItemModelObj.height,
+                          width: homeScreenCardItemModelObj.width,
                           alignment: Alignment.topLeft,
                         ),
                         CustomIconButton(
                           onTap: () {
-                            Navigator.pushNamed(context, MyRoutes.countryScreen);
+                            OnTapFunctions().onTaps[index](context);
                           },
                           height: 28,
                           width: 28,

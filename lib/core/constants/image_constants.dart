@@ -9,8 +9,6 @@ class ImageConstant {
 
   static String imgGroup1410101637 = '$imagePath/img_group_1410101637.png';
 
-  static String imgIconsaxLinearLocation =
-      '$imagePath/img_iconsax_linear_location.svg';
 
   static String imgPlay = '$imagePath/img_play.svg';
 
@@ -52,9 +50,6 @@ class ImageConstant {
 
   static String imageNotFound = 'assets/images/image_not_found.png';
 
-  static String profile = '$imagePath/profile.svg';
-
-  static String dropdown = '$imagePath/dropdown.svg';
 
   static String collegeFinder = '$imagePath/college_finder.png';
 
@@ -63,4 +58,10 @@ class ImageConstant {
   static String ellipsis214 = '$imagePath/Ellipse_214.png';
 
   static String start = '$imagePath/Frame_1410102072.png';
+
+  static String location_icon = '$imagePath/img_iconsax_linear_location.svg';
+
+  static String dropdown_icon = '$imagePath/dropdown.svg';
+
+  static String avatar = '$imagePath/profile.svg';
 }

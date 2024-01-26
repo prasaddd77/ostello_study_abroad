@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:ostello_task/presentation/screens/budget_screen.dart';
-import 'package:ostello_task/presentation/screens/countries_screen.dart';
-import 'package:ostello_task/presentation/screens/degree_screen.dart';
-import 'package:ostello_task/presentation/screens/exams_screens/exam1_screen.dart';
-import 'package:ostello_task/presentation/screens/exams_screens/exam2_screen.dart';
-import 'package:ostello_task/presentation/screens/exams_screens/exam3_screen.dart';
-import 'package:ostello_task/presentation/screens/exams_screens/exam4_screen.dart';
-import 'package:ostello_task/presentation/screens/exams_screens/exam5_screen.dart';
-import 'package:ostello_task/presentation/screens/home_screen.dart';
-import 'package:ostello_task/presentation/screens/major_subject_screen.dart';
-import 'package:ostello_task/presentation/screens/scholarship_screen.dart';
+import 'package:ostello_task/presentation/screens/career_path_screens/budget_screen.dart';
+import 'package:ostello_task/presentation/screens/career_path_screens/countries_screen.dart';
+import 'package:ostello_task/presentation/screens/career_path_screens/degree_screen.dart';
+import 'package:ostello_task/presentation/screens/career_path_screens/major_subject_screen.dart';
+import 'package:ostello_task/presentation/screens/career_path_screens/scholarship_screen.dart';
+import 'package:ostello_task/presentation/screens/exam_screens/exam1_screen.dart';
+import 'package:ostello_task/presentation/screens/exam_screens/exam2_screen.dart';
+import 'package:ostello_task/presentation/screens/exam_screens/exam3_screen.dart';
+import 'package:ostello_task/presentation/screens/exam_screens/exam4_screen.dart';
+import 'package:ostello_task/presentation/screens/exam_screens/exam5_screen.dart';
+import 'package:ostello_task/presentation/screens/exam_screens/exam6_screen.dart';
+import 'package:ostello_task/presentation/screens/home_screen/home_screen.dart';
 
 
 class MyRoutes {
@@ -24,6 +25,7 @@ class MyRoutes {
   static const String exam3Screen = '/exam3';
   static const String exam4Screen = '/exam4';
   static const String exam5Screen = '/exam5';
+  static const String exam6Screen = '/exam6';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -49,6 +51,8 @@ class MyRoutes {
         return MaterialPageRoute(builder: (_) => Exam4Screen());
       case exam5Screen:
         return MaterialPageRoute(builder: (_) => Exam5Screen());
+      case exam6Screen:
+        return MaterialPageRoute(builder: (_) => Exam6Screen());
 
       default:
         return MaterialPageRoute(

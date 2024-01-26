@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ostello_task/presentation/models/home_page_model.dart';
+import 'package:ostello_task/presentation/models/home_screen_models/home_page_model.dart';
 
 class HomePageProvider extends ChangeNotifier {
   HomePageModel homePageModelObj = HomePageModel();

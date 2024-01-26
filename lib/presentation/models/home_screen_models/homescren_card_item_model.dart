@@ -1,6 +1,6 @@
-import 'package:ostello_task/core/utils/image_constants.dart';
-class ExploreuniversitiesItemModel {
-  ExploreuniversitiesItemModel(
+import 'package:ostello_task/core/constants/image_constants.dart';
+class HomeScreenCardItemModel {
+  HomeScreenCardItemModel(
       {this.image,
       this.exploreText,
       this.descriptionText,

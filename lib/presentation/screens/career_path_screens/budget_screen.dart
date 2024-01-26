@@ -3,7 +3,7 @@ import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_button.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_row.dart';
-import 'package:ostello_task/providers/slider_provider.dart';
+import 'package:ostello_task/providers/career_path_providers/slider_provider.dart';
 import 'package:provider/provider.dart';
 
 class BudgetScreen extends StatefulWidget {

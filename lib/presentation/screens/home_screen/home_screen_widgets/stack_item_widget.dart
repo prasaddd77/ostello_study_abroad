@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ostello_task/core/utils/app_decorations.dart';
 import 'package:ostello_task/core/utils/theme_helper.dart';
 import 'package:ostello_task/presentation/common_widgets/custom_image_view.dart';
-import 'package:ostello_task/presentation/models/stack_item_model.dart';
+import 'package:ostello_task/presentation/models/home_screen_models/stack_item_model.dart';
 
 
 // ignore: must_be_immutable
