@@ -6,7 +6,7 @@ class HttpService {
   String baseUrl = MyUrls.baseUrl;
 
   Future<bool> createStudyAbroadOfStudentPost(Map<String, dynamic> bodyData) async {
-    final String apiUrl = '$baseUrl/study-abroadcreateStudyAbroadOfStudent';
+    final String apiUrl = '$baseUrl/study-abroad/createStudyAbroadOfStudent';
 
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
