@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../data/repositories/http_service.dart';
+
 class Exam4Provider extends ChangeNotifier{
   bool _isAware = false;
 

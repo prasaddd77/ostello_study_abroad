@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello_task/core/constants/image_constants.dart';
 
 class CustomDialog {
-  static void showSuccessDialog(BuildContext context, Function() onDonePressed) {
+  static void showSuccessDialog(BuildContext context, Function() onDonePressed, String successText, String successSubText) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -23,16 +23,16 @@ class CustomDialog {
                   child: Image.asset(ImageConstant.success_icon, height: 74, width: 70),
                 ),
                 const SizedBox(height: 8.0),
-                const Text(
+                Text(
                   textAlign: TextAlign.center,
-                  'Demo successfully booked!',
+                  successText,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
                 ),
                 const SizedBox(height: 16.0),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.0),
                   child: Text(
-                    'Thank you for booking free demo class with Aakash Institute. Please check your email for all the required details of the session.',
+                    successSubText,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -52,7 +52,7 @@ class CustomDialog {
     );
   }
 
-  static void showFailureDialog(BuildContext context, String message, Function() onTryAgainPressed) {
+  static void showFailureDialog(BuildContext context, String message, String failureSubText, Function() onTryAgainPressed) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -71,16 +71,16 @@ class CustomDialog {
                   child: Image.asset(ImageConstant.failure_icon, height: 74, width: 70),
                 ),
                 const SizedBox(height: 8.0),
-                const Text(
+               Text(
                   textAlign: TextAlign.center,
-                  'Demo Booking Failed!',
+                  message,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                 ),
                 const SizedBox(height: 16.0),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.0),
                   child: Text(
-                    'Apologies for the inconvenience caused! Requesting you to please try booking your free demo again with Aakash Institute.',
+                    failureSubText,
                     textAlign: TextAlign.center,
                   ),
                 ),

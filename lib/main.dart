@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
+import 'package:ostello_task/providers/answer_provider.dart';
 import 'package:ostello_task/providers/career_path_providers/major_subject_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -27,30 +28,33 @@ void main() async {
     ]),
     PrefUtils().init()
   ]).then((value) {
-    runApp(MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => HomePageProvider()),
-        ChangeNotifierProvider(create: (_) => SliderProvider()),
-        ChangeNotifierProvider(create: (_) => ScholarshipProvider()),
-        ChangeNotifierProvider(create: (_) => CountryProvider()),
-        ChangeNotifierProvider(create: (_) => DegreeProvider()),
-        ChangeNotifierProvider(create: (_) => MajorSubjectProvider()),
-        ChangeNotifierProvider(create: (_) => Exam1Provider()),
-        ChangeNotifierProvider(create: (_) => Exam2Provider()),
-        ChangeNotifierProvider(create: (_) => Exam3Provider()),
-        ChangeNotifierProvider(create: (_) => Exam4Provider()),
-        ChangeNotifierProvider(create: (_) => Exam5Provider()),
-        ChangeNotifierProvider(create: (_) => Exam6Provider()),
-      ],
-      // Uncomment the code below when you do not want to use the device preview
+    runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => HomePageProvider()),
+          ChangeNotifierProvider(create: (_) => SliderProvider()),
+          ChangeNotifierProvider(create: (_) => ScholarshipProvider()),
+          ChangeNotifierProvider(create: (_) => CountryProvider()),
+          ChangeNotifierProvider(create: (_) => DegreeProvider()),
+          ChangeNotifierProvider(create: (_) => MajorSubjectProvider()),
+          ChangeNotifierProvider(create: (_) => Exam1Provider()),
+          ChangeNotifierProvider(create: (_) => Exam2Provider()),
+          ChangeNotifierProvider(create: (_) => Exam3Provider()),
+          ChangeNotifierProvider(create: (_) => Exam4Provider()),
+          ChangeNotifierProvider(create: (_) => Exam5Provider()),
+          ChangeNotifierProvider(create: (_) => Exam6Provider()),
+          ChangeNotifierProvider(create: (_) => AnswerProvider()),
+        ],
+        // Uncomment the code below when you do not want to use the device preview
 
-      //child: const MyApp(),
+        //child: const MyApp(),
 
-      //Comment the code below when you do not want to use the device preview
-      child: DevicePreview(
-        builder: (context) => MyApp(),
+        //Comment the code below when you do not want to use the device preview
+        child: DevicePreview(
+          builder: (context) => MyApp(),
+        ),
       ),
-    ),);
+    );
   });
   // runApp(
   //   MultiProvider(

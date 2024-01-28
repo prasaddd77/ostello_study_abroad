@@ -118,5 +118,6 @@ class Assets {
   static const String utilsPrefUtils = 'lib/core/utils/pref_utils.dart';
   static const String utilsRadioButtoTextStyle = 'lib/core/utils/radio_butto_text_style.dart';
   static const String utilsThemeHelper = 'lib/core/utils/theme_helper.dart';
+  static const String loadingGif = 'lib/core/assets/loading-gif/loading.gif';
 
 }

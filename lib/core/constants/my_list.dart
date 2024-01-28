@@ -1,7 +1,14 @@
 class MyList {
   MyList._();
 
-  static const List<String> countryNames = ['United Kingdom', 'USA', 'Germany', 'Japan', 'Canada', 'Australia'];
+  static const List<String> countryNames = [
+    'United Kingdom',
+    'USA',
+    'Germany',
+    'Japan',
+    'Canada',
+    'Australia'
+  ];
   static const List<String> imageList = [
     'lib/core/assets/images/uk.png',
     'lib/core/assets/images/usa.png',
@@ -20,9 +27,17 @@ class MyList {
     'Business Administration',
   ];
   static const List<String> year = [
-    '2024',
-    '2025',
-    '2026',
-    '2027',
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
   ];
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:ostello_task/core/constants/my_colors.dart';
 import 'package:ostello_task/core/routes/my_routes.dart';
@@ -35,9 +37,7 @@ class _ScholarshipScreenState extends State<ScholarshipScreen> {
           IconButton(
             icon: const Icon(Icons.arrow_forward),
             color: MyColors.primaryColor,
-            onPressed: () {
-
-            },
+            onPressed: () {},
           ),
           const SizedBox(width: 16.0),
         ],
@@ -71,7 +71,9 @@ class _ScholarshipScreenState extends State<ScholarshipScreen> {
                   );
                 },
               ),
-              const SizedBox(height: 16,),
+              const SizedBox(
+                height: 16,
+              ),
               Consumer<ScholarshipProvider>(
                 builder: (context, scholarshipProvider, child) {
                   return CustomContainer(
@@ -89,20 +91,30 @@ class _ScholarshipScreenState extends State<ScholarshipScreen> {
               const Spacer(),
               CustomButton(
                 title: 'Submit',
-                onPressed: () async{
-                  final isYesSelected = Provider.of<ScholarshipProvider>(context, listen: false).isYesSelected;
+                onPressed: () async {
+                  final isYesSelected =
+                      Provider.of<ScholarshipProvider>(context, listen: false)
+                          .isYesSelected;
                   StudyAbroadData.updateScholarship(isYesSelected);
                   final jsonData = StudyAbroadData.getJsonData();
                   print(jsonData);
-                  bool response = await httpService.createStudyAbroadOfStudentPost(jsonData);
+                  bool response = await httpService
+                      .createStudyAbroadOfStudentPost(jsonData);
 
                   if (response) {
-                    CustomDialog.showSuccessDialog(context,  () {
-                      Navigator.popUntil(context, ModalRoute.withName(MyRoutes.homeScreen));
-                    });
+                    CustomDialog.showSuccessDialog(context, () {
+                      Navigator.popUntil(
+                          context, ModalRoute.withName(MyRoutes.homeScreen));
+                    }, 'Demo successfully booked!',
+                        'Thank you for booking free demo class with Aakash Institute. Please check your email for all the required details of the session.');
                   } else {
-                    CustomDialog.showFailureDialog(context, "Demo Booking Failed!", () {
-                      Navigator.popUntil(context, ModalRoute.withName(MyRoutes.homeScreen));
+                    CustomDialog.showFailureDialog(
+                        context,
+                        "Demo Booking Failed!",
+                        'Apologies for the inconvenience caused! Requesting you to please try booking your free demo again with Aakash Institute.',
+                        () {
+                      Navigator.popUntil(
+                          context, ModalRoute.withName(MyRoutes.homeScreen));
                     });
                   }
                 },

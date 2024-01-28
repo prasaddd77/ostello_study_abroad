@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import '../../data/repositories/http_service.dart';
+
 class Exam2Provider extends ChangeNotifier {
   String _enteredText = '';
 
